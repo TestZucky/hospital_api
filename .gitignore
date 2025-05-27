@@ -1,0 +1,22 @@
+# Environment files
+*.env
+*.flaskenv
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+hospital_venv/
+venv/
+.env/
+
+# VSCode settings (optional)
+.vscode/
+
+# macOS system files (optional)
+.DS_Store
+
+# Logs
+*.log
