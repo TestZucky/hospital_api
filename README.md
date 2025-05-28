@@ -1,23 +1,25 @@
+# Hospital API
+
 Aim - Build a secure Hospital Managment REST API using Flask that supports RBAC.
 The system should manage hospital information and user accounts with distinct roles(admin, user).
 Admins can create, read, update and delete Hospital records.
 
-Regular user can only see and filter hospital store inforamtion.
-The system must use JWT for authentication and SQL Alchemy for ORM.
-Filtering and pagination should be also included.
+- Regular user can only see and filter hospital store inforamtion.
+- The system must use JWT for authentication and SQL Alchemy for ORM.
+- Filtering and pagination should be also included.
 
-Added DB Migration.
-Added URl for adding stores, fetch specific stores.
-Hospital search functionality
-Add token blacklisting (logout/revoke support)
-Add “Forgot Password” endpoint
-Send reset link/token to email (mock the email part for now)
-Prevent brute-force attacks using Flask-Limiter
-Add relationships: e.g., one Hospital has many Doctors
-Cache common queries (e.g., hospital list)
-Use joinedload() from SQLAlchemy to avoid redundant DB hits
-Use Flask-Uploads or Flask-S3 to support file uploads
-Use pytest to test models, views, and JWT flow
-Use coverage.py to check what % of code is tested
-Create Dockerfile and docker-compose.yml, Include MySQL in docker-compose.
-Deploy it on Render
+- Added DB Migration.
+- Added URl for adding stores, fetch specific stores.
+- Hospital search functionality
+- Add token blacklisting (logout/revoke support)
+- Add “Forgot Password” endpoint
+- Send reset link/token to email (mock the email part for now)
+- Prevent brute-force attacks using Flask-Limiter
+- Add relationships: e.g., one Hospital has many Doctors
+- Cache common queries (e.g., hospital list)
+- Use joinedload() from SQLAlchemy to avoid redundant DB hits
+- Use Flask-Uploads or Flask-S3 to support file uploads
+- Use pytest to test models, views, and JWT flow
+- Use coverage.py to check what % of code is tested
+- Create Dockerfile and docker-compose.yml, Include MySQL in docker-compose.
+- Deploy it on Render
