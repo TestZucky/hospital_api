@@ -6,6 +6,7 @@ from .routes.store_routes import store_bp
 from .routes.auth_routes import auth_bp
 from .routes.user_routes import users_bp
 from flask_jwt_extended import JWTManager
+from flask_migrate import Migrate
 
 
 def create_app():
@@ -19,6 +20,7 @@ def create_app():
         app.config.from_object(ProdConfig)
 
     db.init_app(app)
+    migrate = Migrate(app=app, db=db)
 
     app.register_blueprint(store_bp, url_prefix='/stores')
     app.register_blueprint(auth_bp, url_prefix='/auth')

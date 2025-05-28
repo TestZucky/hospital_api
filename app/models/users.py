@@ -9,3 +9,4 @@ class User(db.Model):
     user_city = db.Column(db.String(50), nullable=False)
     user_state = db.Column(db.String(50), nullable=False)
     user_role = db.Column(db.String(10), nullable=False)
+    user_email = db.Column(db.String(120), nullable=True)

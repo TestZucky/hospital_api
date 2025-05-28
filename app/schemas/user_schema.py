@@ -7,3 +7,4 @@ class UserSchema(Schema):
     user_city = fields.Str(required=True)
     user_state = fields.Str(required=True)
     user_role = fields.Str(required=True)
+    user_email = fields.Str(required=True)

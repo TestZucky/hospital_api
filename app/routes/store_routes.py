@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from ..models.stores import Store
 from ..models.users import User
 from ..middlewares.role_required import role_required
@@ -39,9 +39,13 @@ def get_hospitals_by_state():
     if not user:
         return jsonify(response = 'no such user exist'), 404
     
-    stores = Store.query.filter_by(store_state=user.user_state).all()
+    page = request.args.get('page', 1, type=int)
+    per_page = 2
+
+    paginated_stores = Store.query.filter_by(store_state = user.user_state).paginate(page=page, per_page=per_page, error_out=False)
+
+    stores = paginated_stores.items
+    
+    # stores = Store.query.filter_by(store_state=user.user_state).all()
 
     return jsonify(response = store_schema.dump(stores)), 200
-
-
-
