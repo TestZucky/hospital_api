@@ -9,7 +9,7 @@ Admins can create, read, update and delete Hospital records.
 - Filtering and pagination should be also included.
 
 - Added DB Migration.
-- Added URl for adding stores, fetch specific stores.
+- Added URl for adding stores, fetch specific stores. Dont allow duplicate entries.
 - Hospital search functionality
 - Add token blacklisting (logout/revoke support)
 - Add “Forgot Password” endpoint
