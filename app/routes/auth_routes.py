@@ -1,9 +1,10 @@
 from flask import Blueprint, request, jsonify
 from ..services.auth_service import AuthService
 from ..models.users import User
+from ..models.block_list import TokenBlocklist
 from ..schemas.user_schema import UserSchema
 from passlib.hash import bcrypt_sha256
-from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token
+from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token, get_jwt
 from ..db import db
 
 auth_bp = Blueprint('auth_bp', __name__)
@@ -26,6 +27,16 @@ def login():
     tokens = AuthService.generate_tokens(user_id=user.user_id)
 
     return jsonify(tokens), 200
+
+@auth_bp.route('/logout/', methods=['POST'])
+@jwt_required()
+def logout():
+    jti = get_jwt()['jti']
+    db.session.add(TokenBlocklist(jti=jti))
+    db.session.commit()
+
+    return jsonify(response = 'log out successfully...'), 200
+
 
 
 @auth_bp.route('/signup/', methods=['POST'])
