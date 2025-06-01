@@ -15,8 +15,8 @@ Aim - Build a secure Hospital Managment REST API using Flask that supports RBAC.
 - Add token blacklisting (logout/revoke support) [DONE]
 - Add “Forgot Password” endpoint [DONE]
 - Send reset link/token to email (mock the email part for now) [DONE]
-- Prevent brute-force attacks using Flask-Limiter
-- Add relationships: e.g., one Hospital has many Doctors
+- Prevent brute-force attacks using Flask-Limiter [DONE Learnt Not Implemented now]
+- Add relationships: e.g., one Hospital has many Doctors, add another role as doctor [DONE]
 - Cache common queries (e.g., hospital list)
 - Use joinedload() from SQLAlchemy to avoid redundant DB hits
 - Use Flask-Uploads or Flask-S3 to support file uploads

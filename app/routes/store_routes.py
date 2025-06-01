@@ -6,6 +6,7 @@ from flask_jwt_extended import get_jwt_identity
 from ..schemas.store_schema import StoreSchema
 from ..db import db
 from sqlalchemy import func
+from ..roles import ALL_USERS, ADMIN
 
 
 store_bp = Blueprint('store_bp', __name__)
@@ -13,13 +14,13 @@ store_schema = StoreSchema(many=True)
 single_store_schema = StoreSchema()
 
 @store_bp.route('/', methods=['GET'])
-@role_required(role=['admin','user'])
+@role_required(role=ALL_USERS)
 def get_all_hospital():
     stores = Store.query.all()
     return jsonify(data=store_schema.dump(stores)), 200
 
 @store_bp.route('/by_city/', methods=['GET'])
-@role_required(role=['admin', 'user'])
+@role_required(role=ALL_USERS)
 def get_hospitals_by_city():
     user_id = get_jwt_identity()
     user = User.query.get(user_id)
@@ -33,7 +34,7 @@ def get_hospitals_by_city():
 
 
 @store_bp.route('/by_state/', methods=['GET'])
-@role_required(role=['admin', 'user'])
+@role_required(role=ALL_USERS)
 def get_hospitals_by_state():
     user_id = get_jwt_identity()
     user = User.query.get(user_id)
@@ -53,7 +54,7 @@ def get_hospitals_by_state():
     return jsonify(response = store_schema.dump(stores)), 200
 
 @store_bp.route('/by_id/', methods=['GET'])
-@role_required(role=['admin', 'user'])
+@role_required(role=ALL_USERS)
 def show_hospitals_by_id():
 
     hospital_id = request.args.get('hospital_id', 1, type=int)
@@ -67,7 +68,7 @@ def show_hospitals_by_id():
     return jsonify(hospital = store_schema.dump(hospital_details)), 200
 
 @store_bp.route('/add_store/', methods=['POST'])
-@role_required(role=['admin'])
+@role_required(role=ADMIN)
 def add_store():
 
     request_body = request.get_json()
@@ -99,6 +100,7 @@ def add_store():
         return jsonify(response = f'error as {e}'), 500
     
 @store_bp.route('/search_store/', methods=['POST'])
+@role_required(role=ALL_USERS)
 def search_store():
 
     request_body = request.get_json()

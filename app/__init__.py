@@ -6,6 +6,7 @@ from .models.block_list import TokenBlocklist
 from .routes.store_routes import store_bp
 from .routes.auth_routes import auth_bp
 from .routes.user_routes import users_bp
+from .routes.doctor_routes import doc_bp
 from flask_jwt_extended import JWTManager
 from flask_migrate import Migrate
 
@@ -32,5 +33,6 @@ def create_app():
     app.register_blueprint(store_bp, url_prefix='/stores')
     app.register_blueprint(auth_bp, url_prefix='/auth')
     app.register_blueprint(users_bp, url_prefix='/users')
+    app.register_blueprint(doc_bp, url_prefix='/doctor_auth')
 
     return app

@@ -12,3 +12,5 @@ class Store(db.Model):
     store_owner = db.Column(db.String(100), nullable=False)
     store_zip_code = db.Column(db.String(6), nullable=False)
     store_active = db.Column(db.Boolean, nullable=False)
+
+    doctors = db.relationship('Doctor', back_populates='store')

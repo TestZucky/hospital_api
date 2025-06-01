@@ -89,7 +89,6 @@ def forgot_password():
 
     return jsonify(reset_token = reset_token), 200
 
-
 @auth_bp.route('/reset_password/', methods=['POST'])
 @jwt_required()
 def reset_password():
