@@ -13,8 +13,8 @@ Aim - Build a secure Hospital Managment REST API using Flask that supports RBAC.
 - Added URl for adding stores, fetch specific stores. Dont allow duplicate entries. [DONE]
 - Hospital search functionality [DONE]
 - Add token blacklisting (logout/revoke support) [DONE]
-- Add “Forgot Password” endpoint
-- Send reset link/token to email (mock the email part for now)
+- Add “Forgot Password” endpoint [DONE]
+- Send reset link/token to email (mock the email part for now) [DONE]
 - Prevent brute-force attacks using Flask-Limiter
 - Add relationships: e.g., one Hospital has many Doctors
 - Cache common queries (e.g., hospital list)
@@ -23,4 +23,6 @@ Aim - Build a secure Hospital Managment REST API using Flask that supports RBAC.
 - Use pytest to test models, views, and JWT flow
 - Use coverage.py to check what % of code is tested
 - Create Dockerfile and docker-compose.yml, Include MySQL in docker-compose.
+- Create GraphQL API.
+- API Versioing.
 - Deploy it on Render
