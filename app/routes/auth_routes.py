@@ -17,6 +17,9 @@ def login():
 
     json_data = request.get_json()
 
+    if not json_data:
+        return jsonify({'message': 'Request body must be JSON'}), 400
+
     if 'user_name' not in json_data or 'user_password' not in json_data:
         return jsonify({'message': 'missing user_name and user_passwrod'}), 400
     

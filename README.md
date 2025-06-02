@@ -25,4 +25,5 @@ Aim - Build a secure Hospital Managment REST API using Flask that supports RBAC.
 - Create Dockerfile and docker-compose.yml, Include MySQL in docker-compose.
 - Create GraphQL API.
 - API Versioing.
-- Deploy it on Render
+- Deploy it on Render.
+- Containerize the application.
