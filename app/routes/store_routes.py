@@ -84,7 +84,7 @@ def add_store():
         store_city = validated_data['store_city'],
         store_state = validated_data['store_state'],
         store_owner = validated_data['store_owner'],
-    )
+    ).first()
 
     if existing_store:
         return jsonify(response = 'store already existing...'), 409

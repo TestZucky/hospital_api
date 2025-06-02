@@ -8,3 +8,4 @@ marshmallow
 marshmallow-sqlalchemy
 mysql-connector-python
 bcrypt
+pymysql
