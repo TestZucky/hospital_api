@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  db:
+    image: mysql:8.0
+    platform: linux/amd64
+    container_name: mysql_container
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./fresh_schema.sql:/docker-entrypoint-initdb.d/fresh_schema.sql:ro
+    ports:
+      - "3307:3306"
+
+  flask:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: flask_container
+    restart: unless-stopped
+    env_file: .env
+    depends_on:
+      - db
+    ports:
+      - "5001:5000"
+    volumes:
+      - .:/hospital_app
+    command: python run.py
+
+volumes:
+  mysql_data:
